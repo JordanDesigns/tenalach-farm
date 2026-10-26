@@ -4,7 +4,7 @@
 
 backend:
   name: github
-  repo: YOUR-GITHUB-USERNAME/tenalach-farm   # <-- change to the real GitHub repository
+  repo: JordanDesigns/tenalach-farm
   branch: main
   commit_messages:
     update: "Update workshops & events"
