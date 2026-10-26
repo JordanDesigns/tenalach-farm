@@ -4,7 +4,7 @@
 - **Dashboard:** https://tenalach-farm.netlify.app/admin/ (Login with GitHub)
 - **Repository:** https://github.com/JordanDesigns/tenalach-farm. Netlify redeploys on every push, including dashboard edits.
 
-A plain HTML/CSS/JS copy of the Square Online site at tenalachfarm.ca. There is no build step and no database. The Workshops & Events page has a small dashboard so the client can add and remove workshops herself. It can all be hosted for free.
+A plain HTML/CSS/JS copy of the Square Online site at tenalachfarm.ca. There is no build step and no database. The Workshops & Events page has a small dashboard for adding and removing workshops without touching code. It can all be hosted for free.
 
 ## Pages
 
@@ -21,7 +21,7 @@ A plain HTML/CSS/JS copy of the Square Online site at tenalachfarm.ca. There is 
 
 The dashboard is at **`https://tenalachfarm.ca/admin/`** once the site is live. It uses Decap CMS, which is free and open source.
 
-### What the client can do
+### What the dashboard can do
 
 - **Add a workshop or event:** title, Workshop or Event, date, time, location, price, spots, a main photo, extra photos, a short summary, a full description, what to bring, and an optional booking link.
 - **Edit or remove** anything already listed, or switch **"Show on the website"** off to hide something without deleting it.
@@ -45,7 +45,7 @@ The dashboard saves changes into the site's files on GitHub, and the host rebuil
    - Homepage URL: your site URL
    - Authorization callback URL: `https://api.netlify.com/auth/done`
 5. In Netlify: **Site configuration → Access & security → OAuth → Install provider → GitHub**, and paste the OAuth App's Client ID and Secret.
-6. The client needs a free GitHub account. Add it as a **collaborator** on the repository (Settings → Collaborators). She then logs in at `/admin/` with "Login with GitHub".
+6. Log in at `/admin/` with "Login with GitHub" (Jordan is the only editor; the client sends changes to Jordan).
 
 Photos uploaded in the dashboard are saved to `assets/images/uploads/`.
 
