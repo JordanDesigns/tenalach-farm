@@ -1,0 +1,9 @@
+# Only used while building the site
+.claude/
+assets/provided/
+
+# Local tooling
+node_modules/
+.netlify/
+.DS_Store
+Thumbs.db

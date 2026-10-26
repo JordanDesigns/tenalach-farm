@@ -1,0 +1,9 @@
+# Plain static site: no build step, publish the repository as-is.
+[build]
+  publish = "."
+
+# Always fetch the latest workshops after the client publishes from /admin.
+[[headers]]
+  for = "/content/*"
+  [headers.values]
+    Cache-Control = "no-cache"

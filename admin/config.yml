@@ -1,0 +1,139 @@
+# Tenalach Farm dashboard (Decap CMS)
+# The dashboard lives at https://<your-site>/admin/
+# See README.md ("Workshops dashboard") for the one-time setup.
+
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/tenalach-farm   # <-- change to the real GitHub repository
+  branch: main
+  commit_messages:
+    update: "Update workshops & events"
+    uploadMedia: "Upload photo {{path}}"
+    deleteMedia: "Delete photo {{path}}"
+
+# Lets you try the dashboard on your own computer with `npx decap-server`.
+# Ignored on the live site.
+local_backend: true
+
+site_url: https://tenalachfarm.ca
+display_url: https://tenalachfarm.ca
+logo_url: ../assets/images/apple-touch-icon.png
+
+media_folder: assets/images/uploads
+public_folder: assets/images/uploads
+
+collections:
+  - name: workshops
+    label: Workshops & Events
+    editor:
+      preview: false
+    files:
+      - name: workshops
+        label: Workshops & Events
+        file: content/workshops.json
+        description: >-
+          Everything listed on the Workshops & Events page. Add a new one with the
+          "Add" button, open one to change it, or use the trash icon to remove it.
+          Click "Publish" (top right) when you're done; the site updates in about a minute.
+        fields:
+          - label: Workshops & events
+            name: items
+            widget: list
+            label_singular: workshop or event
+            collapsed: true
+            add_to_top: true
+            summary: "{{fields.title}} · {{fields.type}} · {{fields.date}}"
+            fields:
+              - label: Title
+                name: title
+                widget: string
+
+              - label: Show it under
+                name: type
+                widget: select
+                options:
+                  - { label: "Join a Workshop", value: "Workshop" }
+                  - { label: "Attend an Event", value: "Event" }
+                default: Workshop
+
+              - label: Show on the website
+                name: published
+                widget: boolean
+                default: true
+                hint: Turn off to hide it without deleting it.
+
+              - label: Date
+                name: date
+                widget: datetime
+                required: false
+                format: YYYY-MM-DD
+                date_format: MMMM D, YYYY
+                time_format: false
+                picker_utc: true
+                hint: Leave empty to show "Date to be announced". Dated workshops drop off the site automatically the day after.
+
+              - label: Time
+                name: time
+                widget: string
+                required: false
+                hint: For example "6:30 – 8:30 p.m."
+
+              - label: Location
+                name: location
+                widget: string
+                required: false
+                hint: For example "Tenalach Farm" or "Marshalltown Community Hall"
+
+              - label: Price
+                name: price
+                widget: string
+                required: false
+                hint: For example "$45 per person" or "Free". Leave empty to hide.
+
+              - label: Spots
+                name: spots
+                widget: string
+                required: false
+                hint: For example "12 spots", "3 spots left" or "Sold out". Leave empty to hide.
+
+              - label: Main photo
+                name: image
+                widget: image
+                required: false
+                choose_url: false
+                hint: Shown on the card. Landscape photos look best.
+
+              - label: More photos
+                name: gallery
+                widget: list
+                required: false
+                hint: Extra photos shown when visitors click "View details".
+                field:
+                  label: Photo
+                  name: image
+                  widget: image
+                  choose_url: false
+
+              - label: Short summary
+                name: summary
+                widget: text
+                required: false
+                hint: One or two sentences shown on the card.
+
+              - label: Full description
+                name: description
+                widget: text
+                required: false
+                hint: Shown in "View details". Leave a blank line between paragraphs.
+
+              - label: What to bring
+                name: bring
+                widget: text
+                required: false
+                hint: One item per line.
+
+              - label: Booking link (optional)
+                name: bookingLink
+                widget: string
+                required: false
+                hint: Paste a link (Eventbrite, Facebook event, etc.) to show a "Book Now" button. Leave empty to show "Inquire", which opens the contact form.
