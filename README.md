@@ -1,5 +1,9 @@
 # Tenalach Farm website
 
+- **Live site:** https://tenalach-farm.netlify.app (before the tenalachfarm.ca domain is moved over)
+- **Dashboard:** https://tenalach-farm.netlify.app/admin/ (Login with GitHub)
+- **Repository:** https://github.com/JordanDesigns/tenalach-farm. Netlify redeploys on every push, including dashboard edits.
+
 A plain HTML/CSS/JS copy of the Square Online site at tenalachfarm.ca. There is no build step and no database. The Workshops & Events page has a small dashboard so the client can add and remove workshops herself. It can all be hosted for free.
 
 ## Pages
@@ -30,7 +34,7 @@ How it shows on the site:
 - With a booking link, the button says **Book Now**. Without one, it says **Inquire** and fills in the contact form on the page.
 - The **View details** popup appears when there's a full description, a "what to bring" list, or extra photos.
 
-### One-time setup (for you)
+### One-time setup (done on 2026-10-26, kept here for reference)
 
 The dashboard saves changes into the site's files on GitHub, and the host rebuilds from there. That means the site has to be hosted from a GitHub repository, not dragged and dropped.
 
