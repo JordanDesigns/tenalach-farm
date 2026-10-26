@@ -5,7 +5,7 @@
 
 window.SITE_CONFIG = {
   // Where messages, sign-ups and order requests go.
-  email: "cheryl@tenalachfarm.ca",
+  email: "tenalachfarm1@gmail.com",
   // Optional: paste a free Formspree endpoint (https://formspree.io) such as
   // "https://formspree.io/f/abcdwxyz" to have forms send without opening an
   // email app. Left empty, forms open the visitor's email app instead.

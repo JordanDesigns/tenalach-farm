@@ -67,7 +67,7 @@ Note: opening the HTML files by double-clicking them won't load the workshop lis
 
 ## Forms (contact, newsletter, inquiries)
 
-By default, sending a form opens the visitor's email app with a message addressed to cheryl@tenalachfarm.ca. If you'd rather have forms send directly:
+By default, sending a form opens the visitor's email app with a message addressed to tenalachfarm1@gmail.com. If you'd rather have forms send directly:
 
 1. Create a free form at https://formspree.io and copy its endpoint (for example `https://formspree.io/f/abcdwxyz`).
 2. Paste it into `formEndpoint` at the top of `assets/js/main.js`.
