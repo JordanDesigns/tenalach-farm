@@ -17,15 +17,23 @@ window.SITE_CONFIG = {
 
   /* ---------- Mobile menu ---------- */
   const mobileNav = document.querySelector(".mobile-nav");
-  document.querySelectorAll("[data-menu-open]").forEach((btn) =>
-    btn.addEventListener("click", () => mobileNav && mobileNav.classList.add("is-open"))
-  );
-  document.querySelectorAll("[data-menu-close]").forEach((btn) =>
-    btn.addEventListener("click", () => mobileNav && mobileNav.classList.remove("is-open"))
-  );
+  const menuButtons = document.querySelectorAll("[data-menu-open]");
+  function setMenu(open) {
+    if (!mobileNav) return;
+    mobileNav.classList.toggle("is-open", open);
+    document.body.classList.toggle("no-scroll", open);
+    menuButtons.forEach((b) => b.setAttribute("aria-expanded", String(open)));
+    if (open) mobileNav.querySelector("[data-menu-close]").focus();
+  }
+  menuButtons.forEach((btn) => {
+    btn.setAttribute("aria-expanded", "false");
+    btn.addEventListener("click", () => setMenu(true));
+  });
+  document.querySelectorAll("[data-menu-close]").forEach((btn) => btn.addEventListener("click", () => setMenu(false)));
+  if (mobileNav) mobileNav.addEventListener("click", (e) => { if (e.target.closest("a")) setMenu(false); });
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && mobileNav) mobileNav.classList.remove("is-open");
+    if (e.key === "Escape") setMenu(false);
   });
 
   /* ---------- Photo galleries ---------- */

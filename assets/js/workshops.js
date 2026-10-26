@@ -55,7 +55,7 @@
     const primary = item.bookingLink
       ? '<a class="btn btn--cream' + (block ? " btn--block" : "") + '" href="' + esc(item.bookingLink) + '" target="_blank" rel="noopener">Book Now</a>'
       : '<a class="btn btn--cream' + (block ? " btn--block" : "") + '" href="#contact" data-inquire="' + esc(item.title) + '">Inquire</a>';
-    const details = hasDetails(item)
+    const details = index >= 0 && hasDetails(item)
       ? '<button class="text-button" type="button" data-details="' + index + '">View details</button>'
       : "";
     return '<div class="event-actions">' + primary + details + "</div>";
@@ -125,12 +125,23 @@
       actions(item, -1, false) +
       "</div>";
     dialog.showModal();
+    document.body.classList.add("no-scroll");
+    dialogBody.scrollTop = 0;
+    dialog.scrollTop = 0;
+  }
+
+  function closeDetails() {
+    if (dialog.open) dialog.close();
+    document.body.classList.remove("no-scroll");
   }
 
   if (dialog) {
+    // Escape closes the dialog natively; "cancel" fires right away, "close" may arrive later
+    dialog.addEventListener("cancel", () => document.body.classList.remove("no-scroll"));
+    dialog.addEventListener("close", () => document.body.classList.remove("no-scroll"));
     dialog.addEventListener("click", (e) => {
       if (e.target === dialog || e.target.closest("[data-dialog-close]") || e.target.closest("[data-inquire]")) {
-        dialog.close();
+        closeDetails();
         return;
       }
       const thumb = e.target.closest("[data-thumb]");
